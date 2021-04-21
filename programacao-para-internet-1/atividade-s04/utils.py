@@ -65,3 +65,44 @@ def print_links(tags_a=[]):
 
 def is_valid_number_selected_link(number_selected_link, start_number, end_number):
     return (number_selected_link >= start_number) and (number_selected_link <= end_number)
+
+
+def get_positions_substring_in_string(substring, string):
+    return [i for i in range(len(string)) if string.startswith(substring, i)]
+
+
+def get_occurrence(string, length_substring, position_substring, amount_characters_before, amount_characters_after):
+    position_start = position_substring - amount_characters_before
+    position_end = position_substring + length_substring + amount_characters_after
+
+    if position_substring == 0:
+        position_start = position_substring
+        return string[position_start:position_end]
+
+    if position_substring < amount_characters_before:
+        return string[:position_end]
+
+    return string[position_start:position_end]
+
+
+def get_occurrences(formatted_text_lower_case, positions_keyword_in_text, length_keyword, AMOUNT_CHARACTERS_AFTER, AMOUNT_CHARACTERS_BEFORE):
+    occurrences = []
+    amount_occurrences_keyword_in_text = len(
+        positions_keyword_in_text)
+
+    for i in range(amount_occurrences_keyword_in_text):
+        occurrence = get_occurrence(formatted_text_lower_case, length_keyword,
+                                    positions_keyword_in_text[i], AMOUNT_CHARACTERS_BEFORE, AMOUNT_CHARACTERS_AFTER)
+        occurrences.append(occurrence)
+
+    return occurrences
+
+
+def print_occurrences(occurrences):
+    print()
+    print("================ OCORRÊNCIAS ================\n")
+
+    for i in range(len(occurrences)):
+        print(f'{i+1}. {occurrences[i]}')
+
+    print()

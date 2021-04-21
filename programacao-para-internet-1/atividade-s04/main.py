@@ -11,9 +11,9 @@ def main():
 
     while True:
         page_url = input(
-            'Digite a URL de uma página WEB (S - Para encerrar): ')
+            'Digite a URL de uma página WEB (E - Para encerrar): ')
 
-        if (page_url.lower() == 's'):
+        if (page_url.lower() == 'e'):
             clear_terminal()
             break
 
@@ -78,17 +78,28 @@ def main():
 
                 formatted_text_lower_case = formatted_text.lower()
 
-                word_key = input('\nDigite uma palavra chave: ')
-                formatted_word_key = clear_string(word_key).lower()
+                keyword = input('\nDigite uma palavra chave: ')
+                formatted_keyword = clear_string(keyword).lower()
 
-                if (formatted_word_key == ''):
+                if (formatted_keyword == ''):
                     print('\nERRO: Palavra chave inválida')
                     break
 
-                amount_occurrences_keyword_in_text = formatted_text_lower_case.count(
-                    formatted_word_key)
+                positions_keyword_in_text = get_positions_substring_in_string(
+                    formatted_keyword, formatted_text_lower_case)
+                amount_occurrences_keyword_in_text = len(
+                    positions_keyword_in_text)
+                length_keyword = len(formatted_keyword)
+                AMOUNT_CHARACTERS_AFTER = 15
+                AMOUNT_CHARACTERS_BEFORE = 15
+
+                occurrences = get_occurrences(formatted_text_lower_case, positions_keyword_in_text,
+                                              length_keyword, AMOUNT_CHARACTERS_AFTER, AMOUNT_CHARACTERS_BEFORE)
+
                 print(
-                    f'Foram encontradas {amount_occurrences_keyword_in_text} ocorrências de {word_key}\n')
+                    f'\nForam encontradas {amount_occurrences_keyword_in_text} ocorrências de {formatted_keyword}\n')
+
+                print_occurrences(occurrences)
             else:
                 print('\nERRO: Opção inválida!')
                 break
