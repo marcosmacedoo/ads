@@ -55,8 +55,13 @@ def get_tags_a_href_is_valid(tags_a_all):
 
 def print_links(tags_a=[]):
     print()
+    print("================ SELECIONE UM LINK ================\n")
 
     for i in range(len(tags_a)):
-        print(f'\n{i+1}: {tags_a[i]}')
+        print(f'{i+1}: {tags_a[i]}')
 
     print()
+
+
+def is_valid_number_selected_link(number_selected_link, start_number, end_number):
+    return (number_selected_link >= start_number) and (number_selected_link <= end_number)
