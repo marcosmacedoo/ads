@@ -1,0 +1,23 @@
+10
+A 5 correct
+B 13 correct
+C 44 incorrect
+D 49 correct
+E 101 incorrect
+F 133 correct
+G 168 incorrect
+H 170 incorrect
+I 190 incorrect
+J 193 correct
+10
+A 5 incorrect
+A 13 incorrect
+A 44 incorrect
+A 49 correct
+B 101 incorrect
+B 133 incorrect
+B 168 correct
+I 170 incorrect
+I 190 incorrect
+I 193 correct
+0
