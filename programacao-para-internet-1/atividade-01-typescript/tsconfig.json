@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "noEmitOnError": true,
+    "sourceMap": true,
+    "outDir": "src/js"
+  },
+  "include": ["src/ts/**/*"]
+}
