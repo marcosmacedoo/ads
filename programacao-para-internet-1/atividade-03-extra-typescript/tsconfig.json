@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "target": "ES2016",
+    "noEmitOnError": true,
+    "sourceMap": true,
+    "outDir": "src/js"
+  },
+  "include": ["src/ts/**/*"]
+}

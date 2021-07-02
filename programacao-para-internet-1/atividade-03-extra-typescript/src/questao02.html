@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/main.css" />
+    <title>Questão 02</title>
+  </head>
+  <body>
+    <header>
+      <h1>
+        <a href="index.html">Home</a>
+      </h1>
+    </header>
+
+    <main>
+      <div class="content">
+        <article class="card-form">
+          <form id="form-questao02">
+            <div class="input-group">
+              <label for="nome-do-funcionario">Nome</label>
+              <input
+                type="text"
+                id="nome-do-funcionario"
+                name="nome-do-funcionario"
+                placeholder="Digite o nome do funcionário"
+              />
+            </div>
+            <div class="input-group">
+              <label for="valor-total-de-vendas-mes"
+                >Valor total de vendas no mês</label
+              >
+              <input
+                type="number"
+                id="valor-total-de-vendas-mes"
+                name="valor-total-de-vendas-mes"
+                value="0"
+                min="0"
+                step="0.1"
+              />
+            </div>
+            <button class="button">Calcular</button>
+          </form>
+        </article>
+      </div>
+    </main>
+
+    <script src="./js/questao02.js"></script>
+  </body>
+</html>
