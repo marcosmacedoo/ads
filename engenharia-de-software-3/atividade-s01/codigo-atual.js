@@ -1,23 +1,15 @@
 class Navbar {
     constructor() {
+        this.url = {
+            origin: window.location.origin, 
+            pathName: window.location.pathname,
+            href: window.location.href
+        }
         this.$navbar = document.querySelector("#navbar");
         this.$itensNavbar = Array.from(this.$navbar.childNodes);
         this.itens = this.mapearItensNavbar();
-        this.NOMEDACLASSEDEITEMATIVO = "item--ativo";
         this.itemAtivo = this.itemAtivo;
-    }
-
-    mapearItensNavbar() {
-        if (this.$itensNavbar.length === 0) {
-            throw new Error("Itens da Navbar não foram carregados");
-        }
-
-        return this.$itensNavbar.map(($item) => {
-            return {
-                id: $item.id,
-                $element: $item,
-            };
-        });
+        this.NOMEDACLASSEDEITEMATIVO = "item--ativo";
     }
 
     get itemAtivo() {
@@ -26,7 +18,7 @@ class Navbar {
         }
 
         const [itemAtivoFiltrado] = this.itens.filter((item) =>
-            this.itemContemClasse(item.$element, this.NOMEDACLASSEDEITEMATIVO)
+            this.urlPathName.includes(item.id)
         );
 
         return {
@@ -37,6 +29,20 @@ class Navbar {
 
     set itemAtivo(itemAtivoParam) {
         this.itemAtivo = { id: itemAtivoParam.id, $element: itemAtivoParam };
+    }
+
+    mapearItensNavbar() {
+        // Fail fast
+        if (this.$itensNavbar.length === 0) {
+            throw new Error("Itens da Navbar não foram carregados");
+        }
+
+        return this.$itensNavbar.map(($item) => {
+            return {
+                id: $item.id,
+                $element: $item,
+            };
+        });
     }
 
     itemContemClasse($item, nomeDaClasse) {
@@ -56,7 +62,7 @@ class Navbar {
         }
     }
 
-    monitorarCliqueNavbar() {
+    monitorarCliqueNoItemDaNavbar() {
         $navbar.addEventListener("click", (event) => {
             this.itemAtivo = {
                 id: event.target.id,
@@ -78,7 +84,16 @@ class Navbar {
                 this.itemAtivo.$element,
                 this.NOMEDACLASSEDEITEMATIVO
             );
+
+            this.atualizarUrl()
         });
+    }
+
+    atualizarUrl() {
+        this.url.pathName = `/${this.itemAtivo.id}`
+        this.url.href = `${this.url.origin}${this.url.pathName}`
+
+        window.href = this.url.href
     }
 }
 
@@ -86,7 +101,7 @@ class App {
     main() {
         const navbar = new Navbar();
 
-        navbar.monitorarCliqueNavbar()
+        navbar.monitorarCliqueNoItemDaNavbar()
     }
 }
 
