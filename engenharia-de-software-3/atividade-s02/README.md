@@ -4,15 +4,19 @@
 
 Deve-se escolher um código antigo (ou aberto) e alterar trechos de código seguindo os princípios de Coesão, Encapsulamento e Acoplamento
 
-## Sobre o código
+## Vídeo de Apresentação
 
-O `codigo-antigo.js`foi retirado de uma aplicação pelo lado front-end. Nela consiste a requisição a uma [API](https://api.sampleapis.com/rickandmorty/characters) (sobre a série Rick and Morty) e o retorno de dados são personagens com alguns dados como `id`, `nome`, `avatar` e entre outros. 
+[![Vídeo de Apresentação](https://img.youtube.com/vi/D-Yp8jg8HKE/0.jpg)](https://youtu.be/D-Yp8jg8HKE)
 
-> Antes de entrar no assunto código, é importante avisar que o código antigo está em JavaScript e na refatoração para o código atual resolvi utilizar TypeScript - a Orientação a Objetos utilizando essa linguagem é melhor explorada. Também foquei a refatoração de código somente no consumo de dados a API. 
+## Sobre o Código
+
+O `codigo-antigo.js`foi retirado de uma aplicação pelo lado front-end. Nela consiste a requisição a uma [API](https://api.sampleapis.com/rickandmorty/characters) (sobre a série Rick and Morty) e o retorno de dados são personagens com alguns dados como `id`, `nome`, `avatar` e entre outros.
+
+> Antes de entrar no assunto código, é importante avisar que o código antigo está em JavaScript e na refatoração para o código atual resolvi utilizar TypeScript - a Orientação a Objetos utilizando essa linguagem é melhor explorada. Também foquei a refatoração de código somente no consumo de dados a API.
 
 ### Coesão
 
-A Coesão no `codigo-antigo.js` é praticamente inexistente, pois a `class App ` é responśavel por realizar consulta a API, listar os personagens de forma dinâmica na página e lidar com o evento de input text. 
+A Coesão no `codigo-antigo.js` é praticamente inexistente, pois a `class App ` é responśavel por realizar consulta a API, listar os personagens de forma dinâmica na página e lidar com o evento de input text.
 
 ```javascript
 class App {
@@ -42,7 +46,7 @@ Já no `codigo-atual.ts` cada `class` possui um "foco".
 
 ```typescript
 // Validações de dados
-class Utils { 
+class Utils {
     urlIsValid(url: string) { }
 }
 
@@ -175,7 +179,7 @@ class Character {
 
 ### Acoplamento
 
-No `codigo-atual.ts` o acoplamento é existente. Todas as classes se comunicam. Mas a `class Application` é o lugar que possui o maior comunicação. 
+No `codigo-atual.ts` o acoplamento é existente. Todas as classes se comunicam. Mas a `class Application` é o lugar que possui o maior comunicação.
 
 ```typescript
 class Utils { }
