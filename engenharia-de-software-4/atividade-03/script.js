@@ -53,10 +53,7 @@ const updateSelectedProducts = (selectedProduct) => {
 const calculateTotalPrice = () => {
     let totalPrice = 0
 
-    for (let i = 0; i < selectedProducts.length; i++) {
-        const product = selectedProducts[i];
-        totalPrice += product.price
-    }
+    selectedProducts.forEach(product => totalPrice += product.price)
 
     return totalPrice
 }
