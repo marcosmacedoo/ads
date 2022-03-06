@@ -50,17 +50,12 @@ const updateSelectedProducts = (selectedProduct) => {
   );
 };
 
-const calculateTotalPrice = () => {
-    let totalPrice = 0
-
-    selectedProducts.forEach(product => totalPrice += product.price)
-
-    return totalPrice
-}
+const calculateTotalPrice = () =>
+  selectedProducts.reduce((acc, product) => product.price + acc, 0);
 
 const updateTotalPrice = () => {
-    const totalPrice = calculateTotalPrice()
-    $totalPrice.innerHTML = formatMoney(totalPrice)
+  const totalPrice = calculateTotalPrice();
+  $totalPrice.innerHTML = formatMoney(totalPrice);
 };
 
 const handleProductClick = (event) => {
@@ -78,7 +73,6 @@ const handleProductClick = (event) => {
   updateSelectedProducts(selectedProduct);
   updateTotalPrice();
 };
-
 
 loadProducts();
 $productsList.addEventListener("click", handleProductClick);
